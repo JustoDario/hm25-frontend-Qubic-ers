@@ -4,11 +4,16 @@ import {QubicConnectCombinedProvider} from './contexts/QubicConnectContext'
 import {HM25Provider} from './contexts/HM25Context'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
-import StartPage from './pages/StartPage'
+import Home from './pages/Home'
 import EchoPage from './pages/EchoPage'
 import BurnPage from './pages/BurnPage'
 import {Toaster} from 'react-hot-toast'
 import {ConfigProvider} from "./contexts/ConfigContext"
+import QrCode from './pages/QrCode'
+import SendMoney from './pages/Send_money'
+import ReceiveMoney from './pages/Receive_money'
+import Payment from './pages/payments'
+import CurrencyConverter from './pages/CurrencyConverter'
 
 export function Layout({children}) {
     return (
@@ -28,7 +33,12 @@ function App() {
                     <BrowserRouter>
                         <Layout>
                             <Routes>
-                                <Route path="/" element={<StartPage/>}/>
+                                <Route path="/" element={<Home />}/>
+                                <Route path="/Qrcode" element={<QrCode />}/>
+                                <Route path="/SendMoney" element={<SendMoney />} />
+                                <Route path="/ReceiveMoney" element={<ReceiveMoney />} />
+                                <Route path="/Payment" element={<Payment />} />
+                                <Route path="/CurrencyConverter" element={<CurrencyConverter />} />
                                 <Route path="/echo" element={<EchoPage/>}/>
                                 <Route path="/burn" element={<BurnPage/>}/>
                             </Routes>
