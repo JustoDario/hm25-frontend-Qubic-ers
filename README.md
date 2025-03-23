@@ -17,6 +17,26 @@ The web application includes three methods: sending, receiving, and paying peopl
 After deploying the contract on the blockchain, we had to interact with it. First, we tried using qubic-cli and realized that to add new functionalities to the contract, we had to modify an argument file that allows the CLI to understand the new functionalities of the contract. After many hours dedicated to this, we decided to use JavaScript via requests, where we signed the transactions and sent them to the blockchain. So far, we have little implemented, but we now understand how to use JavaScript libraries to achieve this.
 
 ## Our smart contract :
+Smart Contract Funcnalities:
+Apart from build-in functions (i.e. Burn and Echo), we have created following some extra functions.
+1. SetPrice Function:
+   This function allowes to enter an price, and existing price will be updated.
+   Note: We will also include the product details alongwith price, which we have not yet included.
+2. SetSeller:
+   This function is dedicated to assign a unique ID in the blockchain to the seller of the specific product.
+3. setSender:
+   Similar to setSeller sender, this function also store the ID of the sender/Buyer in Blockchain.
+4. processPayments:
+   This is the important function of the contract, as it handle the payments.
+   This function ensure the transfer to amount to the seller account.It also verifies that the amount must not be less than the price of the product.
+   Note: In future we will add the functionalities which will fetch real time exchange rate (Euro to Qubic) and transaction will be done in cryptocurrency.
 
+   
+## How to deploy in your local machine: 
+Once our testnet node is running,in this case ours has IP 5.39.221.235
 
-//Afrz you must talk about our smart contract,functions how it is expected to work
+pnpm install
+
+pnpm start
+
+When the project generates the Webpack files, it will be hosted on port: localhost:3000
