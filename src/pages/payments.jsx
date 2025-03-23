@@ -40,7 +40,7 @@ function Payment() {
         animate={{ opacity: 1, y: 0 }}
         className="text-white text-2xl font-bold mb-4"
       >
-        Escanea tu QR
+        Scan your QR
       </motion.h1>
 
       {/* Cámara en pantalla completa */}
@@ -70,12 +70,12 @@ function Payment() {
           animate={{ scale: 1 }}
           className="absolute top-1/2 transform -translate-y-1/2 bg-green-500 text-white p-6 rounded-full shadow-lg"
         >
-          <p className="text-lg font-bold">✅ Pago Aceptado</p>
+          <p className="text-lg font-bold">✅ Accepted Payment</p>
         </motion.div>
       )}
       <Link
         to={"/"}
-        className="p-2 border rounded bg-red-300 hover:bg-red-500 flex items-center justify-center"
+        className="p-2 border rounded relative bg-red-300 hover:bg-red-500 flex items-center justify-center"
       >
         <button>Back</button>
       </Link>

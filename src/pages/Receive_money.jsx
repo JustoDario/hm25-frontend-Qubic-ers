@@ -44,23 +44,23 @@ function ReceiveMoney() {
             exit={{ opacity: 0, y: -20 }}
             className="w-1/2 bg-white shadow-lg p-4 rounded-lg border border-gray-300"
           >
-            <h3 className="text-lg font-semibold">Solicitud de Pago</h3>
+            <h3 className="text-lg font-semibold">Payment Request</h3>
             <p className="text-sm text-gray-600">
-              <strong>{request.sender}</strong> quiere enviarte{" "}
-              <strong>{request.amount}</strong>. ¿Aceptar?
+              <strong>{request.sender}</strong> wants to send you {" "}
+              <strong>{request.amount}</strong>. ¿Accept?
             </p>
             <div className="flex justify-end gap-4 mt-3">
               <button
                 onClick={() => handleReject(request.id)}
                 className="px-4 py-2 text-red-600 border border-red-600 rounded-lg hover:bg-red-600 hover:text-white"
               >
-                Rechazar
+                Decline
               </button>
               <button
                 onClick={() => handleAccept(request.id)}
                 className="px-4 py-2 text-green-600 border border-green-600 rounded-lg hover:bg-green-600 hover:text-white"
               >
-                Aceptar
+                Accept
               </button>
             </div>
           </motion.div>

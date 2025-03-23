@@ -56,7 +56,7 @@ export default function SendMoney() {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Nombre"
+          placeholder="Name"
         />
         <input
           className="p-2 border rounded placeholder:text-slate-800"
@@ -64,7 +64,7 @@ export default function SendMoney() {
           name="amount"
           value={formData.amount}
           onChange={handleChange}
-          placeholder="Monto"
+          placeholder="Amount"
         />
         <input
           className="p-2 border rounded placeholder:text-slate-800"
@@ -72,7 +72,7 @@ export default function SendMoney() {
           name="wallet"
           value={formData.wallet}
           onChange={handleChange}
-          placeholder="Dirección de Wallet"
+          placeholder="Wallet adress"
         />
         <Link to={'/'} className="p-2 border rounded bg-red-300 hover:bg-red-500 flex items-center justify-center">
           <button>
