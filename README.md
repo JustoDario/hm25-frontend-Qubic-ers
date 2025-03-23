@@ -1,137 +1,22 @@
-# On the server
-## Preperation
-### Install nginx
+# Qubic-ers CHallenge 4: QR Code Payment
+## Our end product(MVP) :
 
-```bash
-sudo apt update
-sudo apt install nginx
-sudo systemctl start nginx
-sudo systemctl enable nginx
-```
+![5116320486907817593](https://github.com/user-attachments/assets/88edf0bc-7e6f-480c-adf2-6d7e10e5415d)
+![5116320486907817597](https://github.com/user-attachments/assets/78c67c0c-064a-44f5-932d-298ffc881421)
+![5116320486907817599](https://github.com/user-attachments/assets/0716870b-a86a-40dc-b7ce-e589b73af36d)
+![5116320486907817596](https://github.com/user-attachments/assets/93273db9-87b1-47ba-a402-8d904deae758)
+![5116320486907817595](https://github.com/user-attachments/assets/ce53e235-ea36-4eae-91f7-fe24e0cb6dac)
+![5116320486907817598](https://github.com/user-attachments/assets/2cfd3dc4-daa6-490c-afb0-17d33a4cdbfc)
+![5116320486907817594](https://github.com/user-attachments/assets/4f00f745-2197-4987-b5a7-1cf075cd3e92)
 
-### Prepare the directories
+In terms of design, we seek simplicity and interactivity, with multiple components accessible to the user, while maintaining the goal of creating a payment gateway dedicated not only to businesses but also to individuals looking for security when sending their cryptocurrencies.
 
-```bash
-sudo mkdir -p /var/www/hm25
-sudo chown -R www-data:www-data /var/www/hm25
-sudo chmod -R 755 /var/www/hm25
-```
+The web application includes three methods: sending, receiving, and paying people within the application and businesses partnered with the organization. We ensure protection through smart contracts that are digitally signed by the user who sends or pays and by the company or person who receives, preventing money loss and protecting their data.
 
-# On your local machine
-## HM25 Repo
+## Dificulties :
+After deploying the contract on the blockchain, we had to interact with it. First, we tried using qubic-cli and realized that to add new functionalities to the contract, we had to modify an argument file that allows the CLI to understand the new functionalities of the contract. After many hours dedicated to this, we decided to use JavaScript via requests, where we signed the transactions and sent them to the blockchain. So far, we have little implemented, but we now understand how to use JavaScript libraries to achieve this.
 
-### Prerequisites
+## Our smart contract :
 
-#### Install git and culr
-```bash
-sudo apt install git
-sudo apt install curl
-```
 
-#### Install pnpm
-For latest version, please refer to [https://github.com/nvm-sh/nvm/releases](https://github.com/nvm-sh/nvm/releases)
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-```
-
-then
-
-```bash
-source ~/.bashrc
-nvm install --lts
-curl -fsSL https://get.pnpm.io/install.sh | sh -
-source ~/.bashrc
-```
-
-verify installation
-
-```bash
-pnpm -v
-```
-
-### Fetch code
-```bash
-git clone https://github.com/icyblob/hm25-frontend
-```
-
-### Install dependencies
-```bash
-pnpm install
-```
-
-### Build
-```bash
-REACT_APP_HTTP_ENDPOINT=http://<server_ip> pnpm build
-```
-
-Add your `<server_ip>` in the command to set the `REACT_APP_HTTP_ENDPOINT` in [this file](https://github.com/icyblob/hm25-frontend/blob/main/src/contexts/ConfigContext.jsx#L20)
-
-If no errors, it's ready for the deployment
-
-### Transfer your files to the server
-
-Use either `scp` or `rsync`
-
-#### Use `scp`
-
-```bash
-# At the HM25 repo's root directory
-scp -r build/* user@your_server_ip:/var/www/hm25
-```
-
-#### Use `rsync`
-
-```bash
-rsync -avzHit build/* user@your_server_ip:/var/www/hm25
-```
-
-# Back to your server
-## Configure `nginx`
-
-```bash
-sudo vim /etc/nginx/sites-available/hm25
-```
-
-Copy the below
-```
-server {
-    listen 8081;
-    server_name <your_server_ip>;
-
-    root /var/www/hm25;
-    index index.html;
-
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
-```
-
-Create symlink
-```bash
-# Remove sites default
-rm /etc/nginx/sites-available/default
-rm /etc/nginx/sites-enabled/default
-# Enable the current config
-sudo ln -s /etc/nginx/sites-available/hm25 /etc/nginx/sites-enabled/
-```
-
-## Test and load
-```bash
-sudo nginx -t
-# If it shows 
-# nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-# nginx: configuration file /etc/nginx/nginx.conf test is successful
-# then go ahead with this command
-sudo systemctl reload nginx
-```
-
-Open the app through http://<your_server_ip>:8081
-
-# Connect to core node server
-If you have already launched the node with <node_ip>, try to connect it with our frontend. Open the Lock/Unlock icon at the top right of the app, select `Connect to Server`, then add your node url:
-```
-http://<node_ip>
-```
-
-Then refresh the page
+//Afrz you must talk about our smart contract,functions how it is expected to work
